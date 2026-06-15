@@ -1,15 +1,14 @@
 ﻿"use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 /* ─── Tokens ─────────────────────────────────────────── */
 const BLUE    = "#1E72B8";
 const DARK    = "#111827";
 const MID     = "#5A6B7A";
-const BGLIGHT = "#F5F7FA";
 
 /* ─── SectionHeading — signature Solari ──────────────── */
 function SectionHeading({
@@ -70,7 +69,7 @@ function HeroText() {
         style={{ background: "linear-gradient(to bottom,rgba(5,20,40,.52) 0%,rgba(5,20,40,.65) 60%,rgba(5,20,40,.72) 100%)" }} />
 
       {/* ── Éléments ambiants flottants ── */}
-      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-5 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute rounded-full"
           style={{ width: 560, height: 560, top: "50%", left: "68%", marginTop: -280, marginLeft: -280, border: "1px solid rgba(255,255,255,0.07)" }}
@@ -96,7 +95,7 @@ function HeroText() {
           transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
         />
         <motion.div
-          className="absolute rounded-full bg-white/[0.05]"
+          className="absolute rounded-full bg-white/5"
           style={{ width: 180, height: 180, bottom: "12%", right: "6%" }}
           animate={{ scale: [1, 1.12, 1], opacity: [0.3, 0.55, 0.3] }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
@@ -152,11 +151,6 @@ function HeroText() {
   );
 }
 
-/* ══════════════════════════════════════════════════════
-   3. "CONÇU POUR VOUS" — style exact Solari section 3
-   Fond gris clair + 4 cards : icône outline + numéro
-   + séparateur + titre small caps + description
-══════════════════════════════════════════════════════ */
 function DesignedForYou() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -261,10 +255,6 @@ function DesignedForYou() {
   );
 }
 
-/* ══════════════════════════════════════════════════════
-   4. SOTILMA MOBILE — style Solari "Our Services"
-   Grille 3 cols plein bord : texte | image | texte
-══════════════════════════════════════════════════════ */
 function MobileHero() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -327,13 +317,6 @@ function MobileHero() {
     const t = setInterval(() => setActiveScreen(i => (i + 1) % nS), 3500);
     return () => clearInterval(t);
   }, [nS]);
-
-  const getScreenAnim = (pos: number) => {
-    if (pos === 0)      return { x: 0,    scale: 1,    opacity: 1,    zIndex: 10 };
-    if (pos === 1)      return { x: 210,  scale: 0.86, opacity: 0.6,  zIndex: 5  };
-    if (pos === nS - 1) return { x: -210, scale: 0.86, opacity: 0.6,  zIndex: 5  };
-    return                { x: 0,    scale: 0.7,  opacity: 0,    zIndex: 1  };
-  };
 
   return (
     <section ref={ref} style={{ backgroundColor: "white", borderTop: "1px solid #E8ECF1" }}>
@@ -417,9 +400,9 @@ function CameraAgricoleSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const specs = [
-    { icon: "☀️", label: "Alimentation",  value: "100% solaire" },
-    { icon: "🤖", label: "Sécurité",      value: "Surveillance IA en continu" },
-    { icon: "📐", label: "Couverture",    value: "Jusqu'à 1 ha" },
+    {label: "Alimentation",  value: "100% solaire" },
+    {label: "Sécurité",      value: "Surveillance IA en continu" },
+    {label: "Couverture",    value: "Jusqu'à 1 ha" },
   ];
 
   return (
@@ -479,11 +462,9 @@ function CameraAgricoleSection() {
                           key={s.label}
                           className="flex h-full min-w-0 items-center justify-start gap-2 rounded-xl bg-slate-50/70 px-2.5 py-2"
                       >
-                        <span className="shrink-0 leading-none" style={{ fontSize: "0.95rem" }}>{s.icon}</span>
-
-                        <div className="flex min-w-0 flex-1 flex-col items-start justify-center leading-tight">
+                        <div className="flex min-w-0 flex-1 flex-col items-start leading-tight">
                           <p
-                              className="whitespace-nowrap text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
+                              className=" text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
                               style={{
                                 color: "#5A6B7A",
                                 letterSpacing: "0.08em",
@@ -493,7 +474,7 @@ function CameraAgricoleSection() {
                           </p>
 
                           <p
-                              className="mt-1 whitespace-nowrap text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
+                              className="mt-1 text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
                               style={{
                                 color: "#111827",
                               }}
@@ -519,7 +500,7 @@ function CameraAgricoleSection() {
                 className="flex w-full justify-center items-center order-first lg:order-last"
             >
               <div
-                  className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px]"
+                  className="relative w-full max-w-70 sm:max-w-[320px] lg:max-w-95"
                   style={{
                     aspectRatio: "4/3",
                   }}
@@ -547,9 +528,9 @@ function PompeMobileSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const specs = [
-    { icon: "☀️", label: "Puissance Solaire", value: "2000 - 4000W" },
-    { icon: "💧", label: "Débit Pompage",      value: "45 – 90 m³/h" },
-    { icon: "🌿", label: "Surface maximum",    value: "10 ha" },
+    { label: "Puissance Solaire", value: "2000 - 4000W" },
+    { label: "Débit Pompage",      value: "45 – 90 m³/h" },
+    { label: "Surface maximum",    value: "10 ha" },
   ];
 
   return (
@@ -565,7 +546,7 @@ function PompeMobileSection() {
                 className="flex w-full justify-center items-center"
             >
               <div
-                  className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px]"
+                  className="relative w-full max-w-70 sm:max-w-[320px] lg:max-w-95"
                   style={{
                     aspectRatio: "4/3",
                   }}
@@ -623,10 +604,9 @@ function PompeMobileSection() {
                           key={s.label}
                           className="flex h-full min-w-0 items-center justify-start gap-2 rounded-xl bg-slate-50/70 px-2.5 py-2"
                       >
-                        <span className="shrink-0 leading-none" style={{ fontSize: "0.95rem" }}>{s.icon}</span>
                         <div className="flex min-w-0 flex-1 flex-col items-start justify-center leading-tight">
                           <p
-                              className="whitespace-nowrap text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
+                              className="text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
                               style={{
                                 color: "#5A6B7A",
                                 letterSpacing: "0.08em",
@@ -635,7 +615,7 @@ function PompeMobileSection() {
                             {s.label}
                           </p>
                           <p
-                              className="mt-1 whitespace-nowrap text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
+                              className="mt-1 text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
                               style={{
                                 color: "#111827",
                               }}
@@ -658,9 +638,7 @@ function PompeMobileSection() {
                   VOIR PLUS
                 </Btn>
               </motion.div>
-
             </div>
-
           </div>
         </div>
       </section>
@@ -673,9 +651,9 @@ function VanneConnecterSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const specs = [
-    { icon: "☀️", label: "Alimentation",      value: "100% solaire" },
-    { icon: "💧", label: "Contrôle Débit",    value: "Pilotable avec le telephone" },
-    { icon: "🌿", label: "Surface irriguée",  value: "4 ha" },
+    {label: "Alimentation",      value: "100% solaire" },
+    {label: "Contrôle Débit",    value: "Pilotable avec le telephone" },
+    {label: "Surface irriguée",  value: "4 ha" },
   ];
 
   return (
@@ -686,8 +664,7 @@ function VanneConnecterSection() {
 
             {/* 1. Bloc Contenu (Header + Specs) */}
             {/* order-1: s'affiche en premier sur mobile */}
-            <div className="flex flex-col items-center text-center order-1 lg:order-none">
-
+            <div className="flex flex-col items-center text-center order-1 lg:order-0">
               {/* Header */}
               <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -705,7 +682,6 @@ function VanneConnecterSection() {
                 >
                   Vanne Sotilma
                 </h2>
-
                 <p
                     className="mt-2 text-[0.6rem] font-semibold uppercase tracking-[0.18em] sm:text-[0.7rem]"
                     style={{ color: "#5A6B7A" }}
@@ -727,8 +703,6 @@ function VanneConnecterSection() {
                           key={s.label}
                           className="flex h-full min-w-0 items-center justify-start gap-2 rounded-xl bg-slate-50/70 px-2.5 py-2"
                       >
-                        <span className="shrink-0 leading-none" style={{ fontSize: "0.75rem" }}>{s.icon}</span>
-
                         <div className="flex min-w-0 flex-1 flex-col items-start justify-center leading-tight">
                           <p
                               className="whitespace-nowrap text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
@@ -739,9 +713,8 @@ function VanneConnecterSection() {
                           >
                             {s.label}
                           </p>
-
                           <p
-                              className="mt-1 whitespace-nowrap text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
+                              className="mt-1 text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
                               style={{
                                 color: "#111827",
                               }}
@@ -753,7 +726,6 @@ function VanneConnecterSection() {
                   ))}
                 </div>
               </motion.div>
-
               <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -763,19 +735,17 @@ function VanneConnecterSection() {
                   VOIR PLUS
                 </Btn>
               </motion.div>
-
             </div>
-
             {/* 2. Bloc Image de la Vanne */}
-            {/* order-2: se place au milieu (sous les specs) sur mobile */}
+            {/* order-2 : se place au milieu (sous les specs) sur mobile */}
             <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex w-full justify-center items-center order-2 lg:order-none"
+                className="flex w-full justify-center items-center order-2 lg:order-0"
             >
               <div
-                  className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px]"
+                  className="relative w-full max-w-70 sm:max-w-[320px] lg:max-w-95"
                   style={{
                     aspectRatio: "4/3",
                   }}
@@ -789,11 +759,8 @@ function VanneConnecterSection() {
                     priority
                 />
               </div>
-
             </motion.div>
-
           </div>
-
           {/* 4. Bloc Flyer commercial (Plein écran en dessous) */}
           <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -804,7 +771,7 @@ function VanneConnecterSection() {
             <div
                 className="relative w-full"
                 style={{
-                  aspectRatio: "16/9", // Format paysage idéal pour occuper l'espace en dessous de la grille
+                  aspectRatio: "16/9",
                   maxWidth: "1000px"
                 }}
             >
@@ -822,9 +789,7 @@ function VanneConnecterSection() {
       </section>
   );
 }
-
-
-/* ── PAGE ─────────────────────────────────────────────── */
+// PAGE
 export default function HomePage() {
   return (
     <>

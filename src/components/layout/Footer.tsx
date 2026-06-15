@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
+import React from "react";
 
 const BLUE   = "#1E72B8";
 const TEXT_D = "#0D2235";
