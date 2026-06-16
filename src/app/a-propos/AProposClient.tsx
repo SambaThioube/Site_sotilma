@@ -16,13 +16,6 @@ const GOLD   = "#E8B84B";
 
 type FormState = "idle" | "loading" | "success" | "error";
 const INITIAL_FORM = { firstName: "", lastName: "", email: "", phone: "", message: "" };
-const partners = [
-    { name: "Orange",     logo: "https://static.wixstatic.com/media/75ad33_fd98e35c10b341a5bd2156e0f335348d~mv2.png/v1/fill/w_258,h_258,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_fd98e35c10b341a5bd2156e0f335348d~mv2.png" },
-    { name: "EOAP",       logo: "https://static.wixstatic.com/media/75ad33_e9d531d5d8314a83a2126be3b0229f4f~mv2.png/v1/fill/w_428,h_138,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_e9d531d5d8314a83a2126be3b0229f4f~mv2.png" },
-    { name: "World Bank", logo: "https://static.wixstatic.com/media/75ad33_03b5a101d1f846e6b07423fdf39bc81e~mv2.png/v1/fill/w_564,h_114,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_03b5a101d1f846e6b07423fdf39bc81e~mv2.png" },
-    { name: "Heifer",     logo: "https://static.wixstatic.com/media/75ad33_0f5dc8b0b88e4b6dac0bd5c96cd1b0d9~mv2.jpeg/v1/fill/w_258,h_258,al_c,lg_1,q_80,enc_avif,quality_auto/75ad33_0f5dc8b0b88e4b6dac0bd5c96cd1b0d9~mv2.jpeg" },
-];
-
 
 /* Réalisations — images de terrain */
 const realisations: { src: string | null; alt: string; label: string; className?: string }[] = [
