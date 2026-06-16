@@ -506,7 +506,7 @@ function CameraAgricoleSection() {
                   }}
               >
                 <Image
-                    src="/v2.jpeg"
+                    src="/v2B.png"
                     alt="Sotilma Caméra — Caméra agro-industrielle"
                     fill
                     className="object-contain"
