@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +130,7 @@
       <workItem from="1781600993097" duration="10246000" />
       <workItem from="1781693840501" duration="2301000" />
       <workItem from="1781868763828" duration="1000" />
-      <workItem from="1782119514464" duration="2375000" />
+      <workItem from="1782119514464" duration="2819000" />
     </task>
     <task id="LOCAL-00001" summary="V2">
       <option name="closed" value="true" />
@@ -161,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781619958760</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="V3">
+      <option name="closed" value="true" />
+      <created>1782121943930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1782121943931</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +183,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="V2" />
-    <option name="LAST_COMMIT_MESSAGE" value="V2" />
+    <MESSAGE value="V3" />
+    <option name="LAST_COMMIT_MESSAGE" value="V3" />
   </component>
 </project>

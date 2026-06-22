@@ -401,7 +401,7 @@ function CameraAgricoleSection() {
 
   const specs = [
     {label: "Alimentation",  value: "100% solaire" },
-    {label: "Sécurité",      value: "Surveillance IA en continu" },
+    {label: "Sécurité",      value: "Surveillance IA" },
     {label: "Couverture",    value: "Jusqu'à 1 ha" },
   ];
 
@@ -651,7 +651,7 @@ function VanneConnecterSection() {
 
   const specs = [
     {label: "Alimentation",      value: "100% solaire" },
-    {label: "Contrôle Débit",    value: "Pilotable avec le telephone" },
+    {label: "Contrôle Débit",    value: "Via smartphone" },
     {label: "Surface irriguée",  value: "4 ha" },
   ];
 
