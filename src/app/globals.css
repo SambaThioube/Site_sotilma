@@ -108,19 +108,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
   color: var(--c-text-900);
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.2;
 }
 
 h1 { font-size: clamp(1.5rem, 3vw, 2.25rem);  font-weight: 600; letter-spacing: -0.025em; }
 h2 { font-size: clamp(1.2rem, 2.5vw, 1.75rem); font-weight: 600; letter-spacing: -0.02em; }
-h3 { font-size: clamp(1rem, 2vw, 1.35rem);     font-weight: 500; }
+h3 { font-size: clamp(4rem, 2vw, 1.55rem);     font-weight: 500; }
 h4 { font-size: 1rem;                           font-weight: 500; }
 
 p {
   color: var(--c-text-500);
   line-height: 1.75;
   font-size: 1rem;
+}
+
+.service-label {
+  font-size: 0.65rem;
+}
+.service-value {
+  font-size: 0.70rem;
 }
 
 a {

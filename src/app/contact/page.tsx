@@ -14,7 +14,7 @@ export default function ContactPage() {
                         initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.55 }}>
               <p className="mb-3 text-[10px] sm:text-xs font-medium uppercase tracking-[0.35em]" style={{ color: BLUE }}>
-                SOTILMA
+                SOTILMA SERVICE
               </p>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
                 Une plateforme intelligente pour automatiser, surveiller et optimiser vos systèmes d’irrigation et équipements agricoles en temps réel.
@@ -26,11 +26,11 @@ export default function ContactPage() {
                         initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.55 }}>
 
-              <h3 className="text-3xl font-bold text-slate-900">
+              <h3 className="text-5xl font-bold text-slate-900">
                 Sotilma Cloud
               </h3>
               <p className="mt-4 text-base leading-8 text-gray-600">
-                Sotilma Cloud est un service de vidéosurveillance intelligente de nouvelle génération sans achat de matériel. Suivez votre exploitation en temps réel, simplement et de manière sécurisée directement depuis votre téléphone portable.
+                Sotilma Cloud est un service de vidéosurveillance intelligente de nouvelle génération. Suivez votre exploitation en temps réel, simplement et de manière sécurisée directement depuis votre téléphone portable.
               </p>
               <div className="mt-8 grid gap-4 w-full md:grid-cols-2">
                 {/* Offre Matériel & Service */}
@@ -57,17 +57,15 @@ export default function ContactPage() {
                     <li>✓ Surveillance fiable 24h/24 et 7j/7</li>
                   </ul>
                 </div>
-              </div>
-              <div className="mx-auto mt-6" style={{ width: 44, height: 3, backgroundColor: BLUE, borderRadius: 4 }} />
-            </motion.div>
+              </div></motion.div>
 
             {/* Service 2 : Abonel - Pompe */}
             <motion.div className="mx-auto flex w-full max-w-3xl min-w-0 flex-col items-center px-2 text-center"
                         initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.55 }}>
 
-              <h3 className="text-3xl font-bold text-slate-900">
-                Abonel - Pompe
+              <h3 className="text-5xl font-bold text-slate-900">
+                Abonel Pompe
               </h3>
 
               <p className="mt-4 text-base leading-8 text-gray-600">
@@ -102,9 +100,7 @@ export default function ContactPage() {
                     <li>✓ Idéal bassin ou lac</li>
                   </ul>
                 </div>
-              </div>
-              <div className="mx-auto mt-6" style={{ width: 44, height: 3, backgroundColor: BLUE, borderRadius: 4 }} />
-            </motion.div>
+              </div> </motion.div>
 
           </div>
         </section>

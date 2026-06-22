@@ -464,7 +464,7 @@ function CameraAgricoleSection() {
                       >
                         <div className="flex min-w-0 flex-1 flex-col items-start leading-tight">
                           <p
-                              className=" text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
+                              className="service-label font-semibold uppercase leading-none"
                               style={{
                                 color: "#5A6B7A",
                                 letterSpacing: "0.08em",
@@ -472,7 +472,6 @@ function CameraAgricoleSection() {
                           >
                             {s.label}
                           </p>
-
                           <p
                               className="mt-1 text-[0.55rem] font-black leading-none sm:text-[0.68rem]"
                               style={{
@@ -604,9 +603,9 @@ function PompeMobileSection() {
                           key={s.label}
                           className="flex h-full min-w-0 items-center justify-start gap-2 rounded-xl bg-slate-50/70 px-2.5 py-2"
                       >
-                        <div className="flex min-w-0 flex-1 flex-col items-start justify-center leading-tight">
+                        <div className="flex min-w-0 flex-1 flex-col items-start leading-tight">
                           <p
-                              className="text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
+                              className="service-label font-semibold uppercase leading-none"
                               style={{
                                 color: "#5A6B7A",
                                 letterSpacing: "0.08em",
@@ -703,9 +702,9 @@ function VanneConnecterSection() {
                           key={s.label}
                           className="flex h-full min-w-0 items-center justify-start gap-2 rounded-xl bg-slate-50/70 px-2.5 py-2"
                       >
-                        <div className="flex min-w-0 flex-1 flex-col items-start justify-center leading-tight">
+                        <div className="flex min-w-0 flex-1 flex-col items-start leading-tight">
                           <p
-                              className="whitespace-nowrap text-[0.4rem] font-semibold uppercase leading-none sm:text-[0.5rem]"
+                              className="service-label font-semibold uppercase leading-none"
                               style={{
                                 color: "#5A6B7A",
                                 letterSpacing: "0.08em",
