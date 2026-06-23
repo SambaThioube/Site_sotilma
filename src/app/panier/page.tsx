@@ -181,11 +181,6 @@ export default function PanierPage() {
             </div>
 
             <div className="space-y-2.5 mt-5">
-              <Link href="/contact"
-                className="flex items-center justify-center gap-2 w-full text-white font-medium text-sm py-3.5 rounded-full transition-all hover:opacity-85"
-                style={{ backgroundColor: BLUE }}>
-                Envoyer ma commande →
-              </Link>
               <a
                 href={`https://web.whatsapp.com/send?phone=221770982290&text=Bonjour%20Sotilma%2C%20je%20souhaite%20commander%20${encodeURIComponent(items.map(i => `${i.name} x${i.quantity}`).join(', '))}`}
                 target="_blank"
