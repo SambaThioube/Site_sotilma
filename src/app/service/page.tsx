@@ -2,7 +2,7 @@
 import Service from "@/app/service/Service";
 
 export const metadata: Metadata = {
-  title: "À propos",
+  title: "Service",
   description:
       "Découvrez l'histoire de Sotilma, start-up sénégalaise dédiée à la gestion intelligente de l'eau.",
 };

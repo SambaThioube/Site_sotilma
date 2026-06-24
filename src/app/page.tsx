@@ -131,7 +131,7 @@ function HeroText() {
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-wrap items-center justify-center gap-4">
-          <Btn href="/expertise" variant="white">Découvrir nos solutions</Btn>
+          <Btn href="/service" variant="white">Découvrir nos solutions</Btn>
           <Link href="/boutique"
             className="inline-flex items-center gap-2 font-medium text-sm px-8 py-3.5 rounded-full tracking-wide transition-all hover:opacity-85"
             style={{ border: "2px solid rgba(255,255,255,0.65)", color: "#FFFFFF" }}>
@@ -406,7 +406,7 @@ function CameraAgricoleSection() {
   ];
 
   return (
-      <section ref={ref} style={{ backgroundColor: "#FFF", borderTop: "1px solid #E8ECF1" }}>
+      <section ref={ref}className="pt-24" style={{ backgroundColor: "#FFF", borderTop: "1px solid #E8ECF1" }}>
         {/* Titre */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}
                     className="text-center mb-12">
@@ -644,6 +644,105 @@ function PompeMobileSection() {
   );
 }
 
+// SERVICE SOTILMA - section accueil
+function ServiceSotilmaSection() {
+    const ref    = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-60px" });
+
+    const COLORS = ["#1E72B8", "#E67E22"];
+
+    return (
+        <section ref={ref} style={{ backgroundColor: "#FFF", borderTop: "1px solid #E8ECF1" }}>
+
+            {/* En-tête de section */}
+            <div className="pt-12">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
+                    <SectionHeading
+                        label="Service Sotilma"
+                        title=""
+                    />
+                </motion.div>
+            </div>
+
+            {/* CHANGEMENT ICI : Changement de pb-12 à pb-24 pour ajouter un grand espace en bas à l'extérieur des cartes */}
+            <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pb-24 pt-4">
+
+                {/* Grille principale mettant les cartes côte à côte sur écran large */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+                    {/* 1ER BLOC : SOTILMA CLOUD */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.55, delay: 0.1 }}
+                        className="bg-white rounded-2xl p-6 flex flex-col items-center text-center"
+                        style={{
+                            border: `1px solid ${COLORS[0]}33`,
+                            boxShadow: `0 4px 20px ${COLORS[0]}18`,
+                            borderTop: `3px solid ${COLORS[0]}`
+                        }}
+                    >
+                        <div className="mb-4">
+                            <h2
+                                className="font-black uppercase leading-none"
+                                style={{
+                                    fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)",
+                                    color: COLORS[0],
+                                    letterSpacing: "0.02em",
+                                }}
+                            >
+                                SOTILMA CLOUD
+                            </h2>
+                        </div>
+
+                        <div className="w-full">
+                            <p style={{ fontSize: "0.85rem", color: "#334155", lineHeight: 1.75 }}>
+                                Sotilma Cloud est un service de vidéosurveillance intelligente de nouvelle génération.
+                            </p>
+                        </div>
+                    </motion.div>
+
+                    {/* 2ÈME BLOC : ABONE POMPE */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.55, delay: 0.2 }}
+                        className="bg-white rounded-2xl p-6 flex flex-col items-center text-center"
+                        style={{
+                            border: `1px solid ${COLORS[1]}33`,
+                            boxShadow: `0 4px 20px ${COLORS[1]}18`,
+                            borderTop: `3px solid ${COLORS[1]}`
+                        }}
+                    >
+                        <div className="mb-4">
+                            <h2
+                                className="font-black uppercase leading-none"
+                                style={{
+                                    fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)",
+                                    color: COLORS[1],
+                                    letterSpacing: "0.02em",
+                                }}
+                            >
+                                ABONE POMPE
+                            </h2>
+                        </div>
+
+                        <div className="w-full">
+                            <p style={{ fontSize: "0.85rem", color: "#334155", lineHeight: 1.75 }}>
+                                Louez une pompe de surface Sotilma-Mobile, une solution de pompage solaire hybride destinée aux exploitations agricoles.
+                            </p>
+                        </div>
+                    </motion.div>
+
+                </div> {/* Fin de la grille principale */}
+<div>
+
+</div>
+            </div>
+        </section>
+    );
+}
+
 // VANNE CONNECTEE — section accueil
 function VanneConnecterSection() {
   const ref    = useRef(null);
@@ -795,6 +894,7 @@ export default function HomePage() {
       <HeroText />
       <DesignedForYou />
       <MobileHero />
+      <ServiceSotilmaSection/>
       <CameraAgricoleSection/>
       <PompeMobileSection />
       <VanneConnecterSection />
