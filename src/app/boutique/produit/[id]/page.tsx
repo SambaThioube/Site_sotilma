@@ -242,19 +242,8 @@ export default function ProductPage() {
                     ))}
                   </div>
               )}
-
               {/* Boutons */}
               <div className="flex flex-row gap-3 mb-6">
-                <motion.button
-                    onClick={handleAddToCart}
-                    className="flex-1 py-2 px-4 rounded-full font-semibold text-xs border-2"
-                    animate={{ borderColor: added ? "#22c55e" : BLUE, color: added ? "#22c55e" : BLUE }}
-                    whileTap={{ scale: 0.97 }}
-                    style={{ backgroundColor: "#FFF" }}
-                    transition={{ duration: 0.15 }}
-                >
-                  {added ? "Ajouté ✓" : "Ajouter au panier"}
-                </motion.button>
                 <Link href="/panier"
                       className="flex-1 py-2 px-4 rounded-full font-semibold text-xs text-center transition-all hover:opacity-90 border-2"
                       style={{ backgroundColor: "#FFF", color: BLUE, borderColor: BLUE }}
