@@ -9,7 +9,6 @@ import { motion, useInView } from "framer-motion";
 const BLUE    = "#1E72B8";
 const DARK    = "#111827";
 const MID     = "#5A6B7A";
-
 /* ─── SectionHeading — signature Solari ──────────────── */
 function SectionHeading({
   label, title, subtitle, light = false, align = "center",

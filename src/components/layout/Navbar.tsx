@@ -86,7 +86,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <CartIcon />
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link href="/a-propos" onClick={closeMenu}
+                <Link href="/a-propos#contact" onClick={closeMenu}
                       className="text-sm font-medium px-8 py-3.5 rounded-full transition-all hover:opacity-85"
                       style={{ backgroundColor: BLUE, color: "#FFFFFF" }}>
                   Devis gratuit

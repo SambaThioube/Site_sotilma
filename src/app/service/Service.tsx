@@ -5,6 +5,16 @@ import {Reveal} from "@/components/ui/Reveal";
 import {domainesExpertise} from "@/lib/data";
 import Image from "next/image";
 
+const COLORS = ["#1E72B8", "#E67E22"];
+const DARK = "#0D2235";
+const MID = "#5A7A94";
+
+const cardStyle = (color: string) => ({
+    border: `1px solid ${color}33`,
+    borderTop: `3px solid ${color}`,
+    boxShadow: `0 6px 20px ${color}18`,
+});
+
 const BLUE = "#1E72B8";
 const TEXT_D = "#0D2235";
 const TEXT_M = "#4A6278";
@@ -126,53 +136,66 @@ export default function Service() {
                         <p className="mt-4 text-base leading-8 text-gray-600">
                             Sotilma Cloud est un service de vidéosurveillance intelligente de nouvelle génération. Suivez votre exploitation en temps réel, simplement et de manière sécurisée directement depuis votre téléphone portable.
                         </p>
-                        <div className="mt-8 grid gap-4 w-full md:grid-cols-2">
-                            {/* Offre Matériel & Service */}
-                            <div className="rounded-xl bg-white p-5 shadow-sm border border-gray-100 text-left">
-                                <h4 className="font-semibold text-slate-900 flex items-center gap-2">
+                        <div className="mt-8 grid gap-5 w-full md:grid-cols-2">
+
+                            {/* Avantages */}
+                            <div
+                                className="rounded-2xl bg-white p-6 text-left transition-all hover:shadow-md"
+                                style={cardStyle(COLORS[0])}
+                            >
+                                <h4 className="font-semibold text-slate-900">
                                     Avantages Matériel
                                 </h4>
-                                <ul className="mt-3 space-y-2 text-sm text-gray-600">
+
+                                <ul className="mt-4 space-y-2 text-sm text-gray-600">
                                     <li>✓ Caméra, accessoires et poteau gratuits</li>
                                     <li>✓ Frais d'installation gratuits</li>
                                     <li>✓ Internet gratuit et illimité</li>
                                     <li>✓ Sans investissement lourd</li>
                                 </ul>
                             </div>
-                            {/* Caractéristiques Techniques */}
-                            <div className="rounded-xl bg-white p-5 shadow-sm border border-gray-100 text-left">
-                                <h4 className="font-semibold text-slate-900 flex items-center gap-2">
+
+                            {/* Technologie */}
+                            <div
+                                className="rounded-2xl bg-white p-6 text-left transition-all hover:shadow-md"
+                                style={cardStyle(COLORS[1])}
+                            >
+                                <h4 className="font-semibold text-slate-900">
                                     Technologie
                                 </h4>
-                                <ul className="mt-3 space-y-2 text-sm text-gray-600">
+
+                                <ul className="mt-4 space-y-2 text-sm text-gray-600">
                                     <li>✓ Accès facile depuis votre téléphone</li>
                                     <li>✓ Suivi en temps réel et pratique</li>
                                     <li>✓ Données et images sécurisées</li>
                                     <li>✓ Surveillance fiable 24h/24 et 7j/7</li>
                                 </ul>
                             </div>
+
                         </div></motion.div>
 
                     {/* Service 2 : Abonel - Pompe */}
                     <motion.div className="mx-auto flex w-full max-w-3xl min-w-0 flex-col items-center px-2 text-center"
                                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.55 }}>
-
                         <h3 className="text-5xl font-bold text-slate-900">
                             Abonel Pompe
                         </h3>
-
                         <p className="mt-4 text-base leading-8 text-gray-600">
                             Louez une pompe de surface Sotilma-Mobile, une solution de pompage solaire hybride destinée aux exploitations agricoles. Elle permet d'alimenter efficacement les systèmes d'irrigation à partir de bassins ou de lacs tout en réduisant la dépendance aux sources d'énergie traditionnelles. Disponible sur la Zone des Niayes.
                         </p>
+                        <div className="mt-8 grid gap-5 w-full md:grid-cols-2">
 
-                        <div className="mt-8 grid gap-4 w-full md:grid-cols-2">
-                            {/* Équipements inclus */}
-                            <div className="rounded-xl bg-white p-5 shadow-sm border border-gray-100 text-left">
-                                <h4 className="font-semibold text-slate-900 flex items-center gap-2">
+                            {/* Équipements */}
+                            <div
+                                className="rounded-2xl bg-white p-6 text-left transition-all hover:shadow-md"
+                                style={cardStyle(COLORS[0])}
+                            >
+                                <h4 className="font-semibold text-slate-900">
                                     Équipements inclus
                                 </h4>
-                                <ul className="mt-3 space-y-2 text-sm text-gray-600">
+
+                                <ul className="mt-4 space-y-2 text-sm text-gray-600">
                                     <li>✓ Pompe surface solaire</li>
                                     <li>✓ Kit complet solaire (panneaux)</li>
                                     <li>✓ Contrôleur pompe</li>
@@ -181,12 +204,16 @@ export default function Service() {
                                 </ul>
                             </div>
 
-                            {/* Performances Techniques */}
-                            <div className="rounded-xl bg-white p-5 shadow-sm border border-gray-100 text-left">
-                                <h4 className="font-semibold text-slate-900 flex items-center gap-2">
+                            {/* Performances */}
+                            <div
+                                className="rounded-2xl bg-white p-6 text-left transition-all hover:shadow-md"
+                                style={cardStyle(COLORS[1])}
+                            >
+                                <h4 className="font-semibold text-slate-900">
                                     Performances
                                 </h4>
-                                <ul className="mt-3 space-y-2 text-sm text-gray-600">
+
+                                <ul className="mt-4 space-y-2 text-sm text-gray-600">
                                     <li>✓ Puissance solaire : 2000 W</li>
                                     <li>✓ Débit maximum : 45 m³/h</li>
                                     <li>✓ Hybride AC/DC</li>
@@ -194,8 +221,8 @@ export default function Service() {
                                     <li>✓ Idéal bassin ou lac</li>
                                 </ul>
                             </div>
-                        </div> </motion.div>
 
+                        </div> </motion.div>
                 </div>
             </section>
         </main>

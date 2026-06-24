@@ -224,7 +224,7 @@ ${form.message}
                 <GalleryLightbox items={realisations}/>
             </section>
 
-            <section style={{backgroundColor: "#F5F9FD"}}>
+            <section id="contact" style={{backgroundColor: "#F5F9FD"}}>
                 <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-10 md:py-14">
 
                     {/* En-tête de section */}
