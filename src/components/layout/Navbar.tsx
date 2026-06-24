@@ -12,7 +12,7 @@ const BLUE = "#1E72B8";
 const navLinks = [
   { href: "/",          label: "Accueil"   },
   { href: "/boutique",  label: "Produit"  },
-  { href: "/contact",  label: "Service"  },
+  { href: "/service",  label: "Service"  },
   { href: "/a-propos",  label: "À propos"  },
 ];
 
