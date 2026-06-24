@@ -84,29 +84,24 @@ export default function AProposPage() {
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        setState("loading");
-        setErrorMsg("");
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name: `${form.firstName} ${form.lastName}`.trim(),
-                    email: form.email,
-                    phone: form.phone,
-                    message: form.message,
-                }),
-            });
-            if (!res.ok) {
-                const data = await res.json();
-                throw new Error(data.error ?? "Erreur serveur");
-            }
-            setState("success");
-            setForm(INITIAL_FORM);
-        } catch (err) {
-            setState("error");
-            setErrorMsg(err instanceof Error ? err.message : "Une erreur est survenue.");
-        }
+
+        const subject = "Nouvelle demande de devis - SOTILMA";
+
+        const body = `
+Nom: ${form.firstName} ${form.lastName}
+Email: ${form.email}
+Téléphone: ${form.phone}
+
+Message:
+${form.message}
+    `.trim();
+
+        const mailtoLink = `mailto:sntech.afrique@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+
+        setState("success");
+        setForm(INITIAL_FORM);
     }
 
     return (
@@ -228,6 +223,7 @@ export default function AProposPage() {
                 {/* Grille bento/masonry avec lightbox */}
                 <GalleryLightbox items={realisations}/>
             </section>
+
             <section style={{backgroundColor: "#F5F9FD"}}>
                 <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-10 md:py-14">
 
