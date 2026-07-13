@@ -84,6 +84,7 @@ export default function Navbar() {
 
             {/* Droite : panier + CTA */}
             <div className="hidden lg:flex items-center gap-3">
+
               <CartIcon />
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link href="/a-propos#contact" onClick={closeMenu}
