@@ -159,7 +159,7 @@ export default function Navbar() {
                   })}
                 </div>
                 <div className="px-5 pb-5 pt-2 border-t border-slate-100 flex flex-col gap-2.5">
-                  <Link href="/contact" onClick={closeMenu}
+                  <Link href="/a-propos#contac" onClick={closeMenu}
                         className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full hover:brightness-110 transition-all"
                         style={{ backgroundColor: BLUE }}>
                     Demander un devis
