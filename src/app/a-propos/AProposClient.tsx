@@ -133,7 +133,7 @@ ${form.message}
                             l&apos;efficacité
                             et la rentabilité de vos opérations — une start-up sénégalaise au service de l&apos;Afrique.
                         </p>
-                        <Link href="/expertise"
+                        <Link href="/service"
                               className="inline-flex items-center gap-2 font-medium text-sm px-8 py-3.5 transition-all hover:opacity-85"
                               style={{backgroundColor: BLUE, color: "#FFFFFF", borderRadius: 40}}>
                             EN SAVOIR PLUS
