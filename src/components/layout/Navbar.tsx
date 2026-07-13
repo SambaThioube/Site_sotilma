@@ -93,24 +93,17 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             </div>
-
-            {/* Mobile : panier + hamburger */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <CartIcon />
-              <motion.button
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  aria-label="Menu"
-                  whileTap={{ scale: 0.9 }}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-[#455B74] hover:bg-slate-100 transition-colors"
-              >
-                <motion.div animate={{ rotate: menuOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {menuOpen
-                        ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-                  </svg>
-                </motion.div>
-              </motion.button>
+            <div className="px-5 pb-5 pt-2 border-t border-slate-100 flex flex-col gap-2.5">
+              <Link href="//a-propos" onClick={closeMenu}
+                className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full hover:brightness-110 transition-all"
+                style={{ backgroundColor: BLUE }}>
+                Demander un devis
+              </Link>
+              <Link href="/panier" onClick={closeMenu}
+                className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full transition-colors hover:brightness-110"
+                style={{ backgroundColor: "#1E72B8" }}>
+                Mon panier
+              </Link>
             </div>
 
           </div>

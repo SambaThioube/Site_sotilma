@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
 
 export interface GalleryImage {
+  
   src: string;
   alt: string;
   title: string;
