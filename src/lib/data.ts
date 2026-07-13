@@ -128,7 +128,7 @@ export const domainesExpertise: DomaineExpertise[] = [
   {
     id: "irrigation",
     subtitle: "Farm",
-    title: "Irrigation",
+    title: "Gestion de l'eau automatique",
     description:
       "La technologie SOTILMA est non seulement accessible et facile à utiliser, mais elle fonctionne également sans besoin d'internet, en utilisant l'énergie solaire.",
     image:

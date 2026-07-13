@@ -239,19 +239,16 @@ function BoutiqueContent() {
               )}
 
               <motion.div className="text-center mt-8" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <Link href="/a-propos" className="inline-flex items-center gap-2 text-sm font-normal transition-opacity hover:opacity-60" style={{ color: BLUE }}>
+                <Link href="/a-propos#contact" className="inline-flex items-center gap-2 text-sm font-normal transition-opacity hover:opacity-60" style={{ color: BLUE }}>
                   Demander un devis personnalisé →
                 </Link>
               </motion.div>
             </div>
           </div>
         </section>
-
-
       </main>
   );
 }
-
 export default function BoutiquePage() {
   return (
       <Suspense fallback={<div className="min-h-screen" />}>
