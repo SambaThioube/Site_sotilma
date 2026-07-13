@@ -728,7 +728,7 @@ function ServiceSotilmaSection() {
                                     letterSpacing: "0.02em",
                                 }}
                             >
-                                ABONE POMPE
+                                ABONEL POMPE
                             </h2>
                         </div>
 
