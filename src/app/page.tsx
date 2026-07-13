@@ -380,8 +380,8 @@ function MobileHero() {
 
 // WhatsApp FAB
 function WhatsAppFab() {
-    // Remplacement par le lien universel d'API avec encodage propre du message
-    const whatsappUrl = "https://api.whatsapp.com/send?phone=221770982290&text=Bonjour%20Sotilma%2C%20je%20souhaite%20avoir%20des%20informations";
+    const whatsappMessage = "Bonjour Sotilma, je vous contacte depuis votre site internet car j'aimerais avoir plus d'informations."
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=221770982290&text=${encodeURIComponent(whatsappMessage)}`;
 
     return (
         <a
