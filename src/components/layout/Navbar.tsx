@@ -94,19 +94,37 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             </div>
-            <div className="px-5 pb-5 pt-2 border-t border-slate-100 flex flex-col gap-2.5">
-              <Link href="//a-propos" onClick={closeMenu}
-                className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full hover:brightness-110 transition-all"
-                style={{ backgroundColor: BLUE }}>
-                Demander un devis
-              </Link>
-              <Link href="/panier" onClick={closeMenu}
-                className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full transition-colors hover:brightness-110"
-                style={{ backgroundColor: "#1E72B8" }}>
-                Mon panier
-              </Link>
+            <div className="lg:hidden">
+              <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="p-2 rounded-lg text-[#1E72B8] hover:bg-slate-100 transition-colors"
+                  aria-label="Ouvrir le menu"
+              >
+                {menuOpen ? (
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-7 h-7"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                ) : (
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-7 h-7"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                )}
+              </button>
             </div>
-
           </div>
         </div>
 

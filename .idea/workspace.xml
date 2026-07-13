@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V3">
+    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/a-propos/AProposClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/a-propos/AProposClient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/panier/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/panier/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "jean-baptiste",
+    "git-widget-placeholder": "#4 on jean-baptiste",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -152,7 +150,7 @@
       <workItem from="1782248338664" duration="944000" />
       <workItem from="1782294973691" duration="12102000" />
       <workItem from="1782378651001" duration="691000" />
-      <workItem from="1783942816398" duration="2193000" />
+      <workItem from="1783942816398" duration="3658000" />
     </task>
     <task id="LOCAL-00001" summary="V2">
       <option name="closed" value="true" />
@@ -258,7 +256,31 @@
       <option name="project" value="LOCAL" />
       <updated>1783943194563</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783945199760</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1783945199760</updated>
+    </task>
+    <task id="LOCAL-00015" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783945339025</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1783945339025</updated>
+    </task>
+    <task id="LOCAL-00016" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783945555001</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1783945555001</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +300,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="V2" />
     <MESSAGE value="V3" />
-    <option name="LAST_COMMIT_MESSAGE" value="V3" />
+    <MESSAGE value="V4" />
+    <option name="LAST_COMMIT_MESSAGE" value="V4" />
   </component>
 </project>
