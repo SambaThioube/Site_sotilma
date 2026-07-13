@@ -53,7 +53,6 @@ export default function PanierPage() {
     );
   }
 
-  // 👉 MESSAGE WHATSAPP (propre + lisible)
   const whatsappMessage = `
 Recapitulatif de mon panier :
 ---------------------------------------------
