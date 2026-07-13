@@ -163,6 +163,7 @@ export default function Navbar() {
                         className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full hover:brightness-110 transition-all"
                         style={{ backgroundColor: BLUE }}>
                     Demander un devis
+
                   </Link>
                   <Link href="/panier" onClick={closeMenu}
                         className="flex items-center justify-center text-white font-normal text-sm px-8 py-3.5 rounded-full transition-colors hover:brightness-110"
