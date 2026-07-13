@@ -403,7 +403,6 @@ ${form.message}
                                     >
                                         WhatsApp
                                     </p>
-
                                     <a
                                         href={`https://api.whatsapp.com/send?phone=221770982290&text=${encodeURIComponent(
                                             "Bonjour Sotilma, je vous contacte depuis votre site internet car j'aimerais avoir plus d'informations."
