@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V4">
+      <change afterPath="$PROJECT_DIR$/public/vpro+1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vpro+2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/boutique/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/boutique/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/boutique/produit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/boutique/produit/[id]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="101" />
+    <option name="cachedIndexableFilesCount" value="103" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -70,7 +74,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "#6 on jean-baptiste",
+    "git-widget-placeholder": "jean-baptiste",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -150,7 +154,8 @@
       <workItem from="1782294973691" duration="12102000" />
       <workItem from="1782378651001" duration="691000" />
       <workItem from="1783942816398" duration="4327000" />
-      <workItem from="1783958229513" duration="368000" />
+      <workItem from="1783958229513" duration="1501000" />
+      <workItem from="1784541229723" duration="2203000" />
     </task>
     <task id="LOCAL-00001" summary="V2">
       <option name="closed" value="true" />
@@ -296,7 +301,31 @@
       <option name="project" value="LOCAL" />
       <updated>1783958362261</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783958829167</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1783958829167</updated>
+    </task>
+    <task id="LOCAL-00020" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783958938145</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1783958938145</updated>
+    </task>
+    <task id="LOCAL-00021" summary="V4">
+      <option name="closed" value="true" />
+      <created>1783959060185</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1783959060185</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
