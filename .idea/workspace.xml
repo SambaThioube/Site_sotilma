@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V4">
-      <change afterPath="$PROJECT_DIR$/public/vpro+1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vpro+2.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/boutique/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/boutique/page.tsx" afterDir="false" />
+    <list default="true" id="1cf914a1-d532-41f0-a743-7d448dde30bc" name="Changes" comment="V5">
       <change beforePath="$PROJECT_DIR$/src/app/boutique/produit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/boutique/produit/[id]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "jean-baptiste",
+    "git-widget-placeholder": "#10 on jean-baptiste",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -155,7 +151,7 @@
       <workItem from="1782378651001" duration="691000" />
       <workItem from="1783942816398" duration="4327000" />
       <workItem from="1783958229513" duration="1501000" />
-      <workItem from="1784541229723" duration="2203000" />
+      <workItem from="1784541229723" duration="2697000" />
     </task>
     <task id="LOCAL-00001" summary="V2">
       <option name="closed" value="true" />
@@ -325,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783959060185</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="V5">
+      <option name="closed" value="true" />
+      <created>1784543712026</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1784543712027</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,6 +350,7 @@
     <MESSAGE value="V2" />
     <MESSAGE value="V3" />
     <MESSAGE value="V4" />
-    <option name="LAST_COMMIT_MESSAGE" value="V4" />
+    <MESSAGE value="V5" />
+    <option name="LAST_COMMIT_MESSAGE" value="V5" />
   </component>
 </project>
