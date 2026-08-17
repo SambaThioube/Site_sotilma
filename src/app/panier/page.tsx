@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/lib/cartContext';
+import { isAllowedImageSrc } from '@/lib/images';
 
 const BLUE   = "#1E72B8";
 const TEXT_D = "#0D2235";
@@ -106,7 +107,9 @@ Total : ${fmt(total)}
                       {/* Image */}
                       <div className="relative shrink-0 rounded-xl overflow-hidden"
                            style={{ width: 80, height: 80, backgroundColor: "#F7F9FC" }}>
-                        <Image src={item.image} alt={item.name} fill className="object-contain p-2" />
+                        {item.image && isAllowedImageSrc(item.image) && (
+                            <Image src={item.image} alt={item.name} fill className="object-contain p-2" />
+                        )}
                       </div>
 
                       {/* Infos */}

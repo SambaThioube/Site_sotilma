@@ -6,30 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cartContext";
+import { fetchProduits } from "@/lib/shop";
+import { isAllowedImageSrc } from "@/lib/images";
+import type { ProduitBoutique as Product } from "@/types";
 
 const BLUE   = "#1E72B8";
 const TEXT_D = "#111111";
 const TEXT_M = "#6B7280";
-
-interface Product {
-  id: string; name: string; description: string;
-  price: number; image: string; category: string; isNew?: boolean;
-}
-
-const products: Product[] = [
-  { id: "camera-agricole-v-pro",           name: "Caméra Agricole Sotilma V Pro",            description: "Sécurité 24/7 - Solaire.",                           price: 170000,  image: "/v2.jpeg", category: "camera" },
-  { id: "vanne-boisseau-3-voies",      name: "Vanne à boisseau sphérique intelligente à trois voies à énergie solaire", description: "Contrôle du débit dans deux directions.",            price: 287000,  image: "https://static.wixstatic.com/media/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png/v1/fill/w_749,h_852,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png", category: "vanne" },
-  { id: "sotilma-mobile-sm01",          name: "Sotilma Mobile SM-01 Simple",          description: "Pompe de surface solaire mobile. Puissance 1890W, débit 45 m³/h.", price: 975000, image: "https://static.wixstatic.com/media/75ad33_5ae75292849c40308616364b4b782980~mv2.png", category: "pack" },
-  { id: "vanne-papillon-iot",           name: "Vanne papillon IoT LoRa/4G avec actionneur électrique quart de tour",    description: "LoRa et 4G intégrés. Actionneur électrique.",        price: 332500,  image: "https://static.wixstatic.com/media/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png/v1/fill/w_748,h_780,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png", category: "vanne", isNew: true },
-  { id: "vanne-automatique-electrique", name: "Vanne automatique électrique",         description: "Pilotage à distance, IP68.",                          price: 720000,  image: "https://static.wixstatic.com/media/75ad33_864369e7d3be47febc58a04e28851451~mv2.png/v1/fill/w_749,h_749,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_864369e7d3be47febc58a04e28851451~mv2.png", category: "vanne", isNew: true },
-  { id: "camera-agricole-v-pro-plus",name: "Caméra Agricole Sotilma V pro +",       description: "Vision HD 24/7, solaire, stockage cloud.",            price: 180000,  image: "/vpro+1.jpeg",        category: "camera" },
-  { id: "camera-agricole-v1",           name: "Caméra Agricole Sotilma  Version 1",       description: "Vision HD 24/7, solaire, stockage cloud.",            price: 105000,  image: "/c2.png",        category: "camera" },
-  { id: "arroseur-auto-4g",             name: "Arroseur automatique 4G pour système d'arrosage",              description: "Goutte-à-goutte & aspersion. Pilotable à distance.", price: 145000,  image: "https://static.wixstatic.com/media/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png/v1/fill/w_748,h_785,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png", category: "irrigation", isNew: true },
-  { id: "sotilma-st02t",                name: "Sotilma-st02T",                        description: "Gestion doubles parcelles, distribution optimisée.",  price: 333000,  image: "https://static.wixstatic.com/media/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png/v1/fill/w_530,h_677,al_c,lg_1,q_85,enc_avif,quality_auto/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png", category: "distribution" },
-  { id: "vanne-simple",                 name: "Vanne motorisée standard",             description: "Simple voie, solaire, pilotage 4G.",                  price: 180000,  image: "https://static.wixstatic.com/media/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg/v1/fill/w_446,h_544,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg", category: "vanne" },
-  { id: "vanne-industrielle-papillon",  name: "Vanne industrielle papillon électrique", description: "Applications intensives. Anti-corrosion.",           price: 527000,  image: "https://static.wixstatic.com/media/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png/v1/fill/w_748,h_792,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png", category: "vanne" },
-  { id: "pack-pro",                     name: "Kit Pack Pro",                         description: "Pack complet caméra + vanne tout-en-un.",             price: 1408000, image: "https://static.wixstatic.com/media/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg/v1/fill/w_748,h_512,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg", category: "pack" },
- ];
 
 const ITEMS_PER_PAGE = 30;
 
@@ -69,10 +52,24 @@ function BoutiqueContent() {
   const { add }             = useCart();
   const [added, setAdded]   = useState<string | null>(null);
 
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState<string | null>(null);
+
   useEffect(() => {
     const c = searchParams.get("categorie");
     if (c && c !== cat) { setCat(c); setPage(1); }
   }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    fetchProduits()
+      .then((data) => { if (!cancelled) { setProducts(data); setError(null); } })
+      .catch(() => { if (!cancelled) setError("Impossible de charger les produits pour le moment."); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
 
   const filtered   = cat === "tous" ? products : products.filter((p) => p.category === cat);
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -160,6 +157,16 @@ function BoutiqueContent() {
 
           <div style={{ backgroundColor: "#EEF3F8" }} className="px-5 sm:px-8 lg:px-12 pt-10 pb-14">
             <div className="max-w-7xl mx-auto">
+              {loading && (
+                  <p className="text-center py-16 text-sm" style={{ color: TEXT_M }}>Chargement des produits…</p>
+              )}
+              {!loading && error && (
+                  <p className="text-center py-16 text-sm" style={{ color: "#C0392B" }}>{error}</p>
+              )}
+              {!loading && !error && paginated.length === 0 && (
+                  <p className="text-center py-16 text-sm" style={{ color: TEXT_M }}>Aucun produit dans cette catégorie.</p>
+              )}
+              {!loading && !error && paginated.length > 0 && (
               <AnimatePresence mode="wait">
                 <motion.div key={cat + "-" + page}
                             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8 items-stretch"
@@ -185,9 +192,11 @@ function BoutiqueContent() {
                                 onMouseLeave={() => setHover(null)}
                           >
                             <div className="relative shrink-0" style={{ height: 150, backgroundColor: "#F5F8FC" }}>
-                              <Image src={p.image} alt={p.name} fill
-                                     className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04]"
-                                     sizes="(max-width: 640px) 50vw, 25vw" />
+                              {p.image && isAllowedImageSrc(p.image) && (
+                                  <Image src={p.image} alt={p.name} fill
+                                         className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04]"
+                                         sizes="(max-width: 640px) 50vw, 25vw" />
+                              )}
                             </div>
                             <div style={{ height: 2, backgroundColor: BLUE }} />
                             <div className="flex flex-col flex-1 px-3 pt-2.5 pb-3">
@@ -214,6 +223,7 @@ function BoutiqueContent() {
                   })}
                 </motion.div>
               </AnimatePresence>
+              )}
 
               {/* Pagination */}
               {totalPages > 1 && (

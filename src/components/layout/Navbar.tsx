@@ -54,6 +54,7 @@ export default function Navbar() {
                     fill sizes="420px"
                     className="object-contain object-left"
                     style={{ filter: "brightness(0)" }}
+                    priority
                 />
               </div>
             </Link>
