@@ -38,6 +38,11 @@ const nextConfig: NextConfig = {
         hostname: "aesie.net",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "twovwpczvblgjdxoyday.supabase.co",
+        pathname: "/**",
+      },
     ],
   },
 };

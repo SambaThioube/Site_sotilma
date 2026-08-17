@@ -6,55 +6,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cartContext";
+import { fetchProduit } from "@/lib/shop";
+import { isAllowedImageSrc } from "@/lib/images";
+import type { ProduitBoutique as Product } from "@/types";
 
 const BLUE   = "#1E72B8";
 const DARK   = "#111111";
 const TEXT_M = "#6B7280";
 const RED    = "#C0392B";
-
-interface Product {
-  id: string; name: string; description: string;
-  price: number; oldPrice?: number; image: string; images?: string[]; category: string; isNew?: boolean;
-}
-
-const products: Product[] = [
-  { id: "vanne-boisseau-3-voies",      name: "Vanne à boisseau sphérique intelligente à trois voies à énergie solaire", description: "Contrôle du débit dans deux directions.",            price: 287000,  image: "https://static.wixstatic.com/media/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png/v1/fill/w_749,h_852,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png/v1/fill/w_749,h_852,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0850deeacbde464f946746f6996a0bee~mv2.png"], category: "vanne" },
-  { id: "vanne-papillon-iot",           name: "Vanne papillon IoT LoRa/4G avec actionneur électrique quart de tour",    description: "LoRa et 4G intégrés. Actionneur électrique.",        price: 332500,  image: "https://static.wixstatic.com/media/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png/v1/fill/w_748,h_780,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png/v1/fill/w_748,h_780,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_0bfea267808b4dc0b1cb3a376674b5b3~mv2.png", "/白底-蝶阀.jpg"], category: "vanne", isNew: true },
-  { id: "vanne-automatique-electrique", name: "Vanne automatique électrique",         description: "Pilotage à distance, IP68.",                          price: 720000,  image: "https://static.wixstatic.com/media/75ad33_864369e7d3be47febc58a04e28851451~mv2.png/v1/fill/w_749,h_749,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_864369e7d3be47febc58a04e28851451~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_864369e7d3be47febc58a04e28851451~mv2.png/v1/fill/w_749,h_749,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_864369e7d3be47febc58a04e28851451~mv2.png"], category: "vanne", isNew: true },
-  { id: "camera-agricole-v-pro-plus",           name: "Camera agricole Sotilma V Pro +",                   description: "Vision HD 24/7, solaire, stockage cloud.",            price: 180000,  image: "/vpro+1.jpeg",        images: ["/vpro+1.jpeg", "/vpro+2.jpeg"], category: "camera" },
-  { id: "camera-agricole-v1",           name: "Caméra Agricole Sotilma Version 1",       description: "Vision HD 24/7, solaire, stockage cloud.",            price: 105000,   image: "/c2.png",        images: ["/c2.png", "/camera-agricole-2.jpg"], category: "camera" },
-  { id: "camera-agricole-v-pro",           name: "Caméra Agricole Sotilma V Pro",            description: "Sécurité 24/7 - Solaire.",                           price: 170000,  image: "/v2.jpeg", images: ["/v2.jpeg", "/v2f.jpeg"], category: "camera" },
-  { id: "arroseur-auto-4g",             name: "Arroseur automatique 4G pour système d'arrosage",              description: "Goutte-à-goutte & aspersion. Pilotable à distance.", price: 145000,  image: "https://static.wixstatic.com/media/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png/v1/fill/w_748,h_785,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png/v1/fill/w_748,h_785,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_96d249a4714640d39ac9a456cc6aaa83~mv2.png"], category: "irrigation", isNew: true },
-  { id: "sotilma-st02t",                name: "Sotilma-st02T",                        description: "Gestion doubles parcelles, distribution optimisée.",  price: 333000,  image: "https://static.wixstatic.com/media/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png/v1/fill/w_530,h_677,al_c,lg_1,q_85,enc_avif,quality_auto/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png/v1/fill/w_530,h_677,al_c,lg_1,q_85,enc_avif,quality_auto/75ad33_70a7caed24c340fa8047ed8e23a2cad2~mv2.png", "/QT-02T图三.png", "/QT-02T图五.png"], category: "distribution" },
-  { id: "vanne-simple",                 name: "Vanne motorisée standard",             description: "Simple voie, solaire, pilotage 4G.",                  price: 180000,  image: "https://static.wixstatic.com/media/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg/v1/fill/w_446,h_544,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg", images: ["https://static.wixstatic.com/media/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg/v1/fill/w_446,h_544,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_82b826c91cd44c88954123ab55cbc531~mv2.jpg", "/vanne-produit.jpg", "/白底球阀2 - 副本.jpg"], category: "vanne" },
-  { id: "vanne-industrielle-papillon",  name: "Vanne industrielle papillon électrique", description: "Applications intensives. Anti-corrosion.",           price: 527000,  image: "https://static.wixstatic.com/media/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png/v1/fill/w_748,h_792,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png/v1/fill/w_748,h_792,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_8d18ecdc976649c2af880eb99f21fa96~mv2.png", "/vanne-produit.jpg", "/白底-蝶阀.jpg"], category: "vanne" },
-  { id: "pack-pro",                     name: "Kit Pack Pro",                         description: "Pack complet caméra + vanne tout-en-un.",             price: 1408000, image: "https://static.wixstatic.com/media/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg/v1/fill/w_748,h_512,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg", images: ["https://static.wixstatic.com/media/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg/v1/fill/w_748,h_512,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/75ad33_e7457a5da71342e382e3536852a93c3d~mv2.jpeg"], category: "pack" },
-  { id: "sotilma-mobile-sm01",          name: "Sotilma Mobile SM-01 Simple",          description: "Pompe de surface solaire mobile. Puissance 1890W, débit 45 m³/h.", price: 975000, image: "https://static.wixstatic.com/media/75ad33_5ae75292849c40308616364b4b782980~mv2.png", images: ["https://static.wixstatic.com/media/75ad33_5ae75292849c40308616364b4b782980~mv2.png", "/sm1.jpeg"], category: "pack" },
-];
-
-const productDetails: Record<string, { longDesc: string; features: string[]; featureItems?: { title: string; desc: string }[] }> = {
-  "vanne-boisseau-3-voies":      { longDesc: "La vanne à boisseau sphérique 3 voies pilotée par énergie solaire permet de contrôler le débit dans deux directions. Idéale pour les systèmes d'irrigation complexes nécessitant une distribution flexible et automatisée.", features: ["Contrôle 3 directions", "100% solaire", "Pilotage 4G à distance", "Compatible IoT / LoRa", "Étanchéité IP68", "Anti-corrosion", "Faible consommation", "Installation facile", "Garantie 6 mois"] },
-  "vanne-papillon-iot":          { longDesc: "La vanne papillon IoT intègre les technologies LoRa et 4G pour un pilotage total à distance. Son actionneur électrique quart de tour assure une ouverture/fermeture rapide et fiable.", features: ["LoRa & 4G intégrés", "Actionneur électrique", "Pilotage à distance", "Installation facile", "Faible consommation", "Alimentation solaire", "Étanchéité IP67", "Anti-corrosion", "Garantie 6 mois"] },
-  "vanne-automatique-electrique":{ longDesc: "La vanne automatique électrique offre un pilotage à distance complet via 4G. Certifiée IP68, elle résiste à l'immersion totale et aux conditions climatiques extrêmes.", features: ["Pilotage à distance", "Étanchéité IP68", "Alimentation solaire", "Commande 4G", "Anti-corrosion", "Ouverture automatique", "Résistance -20°C à 70°C", "Matière inox / laiton", "Garantie 6 mois"] },
-  "camera-agricole-4g":          { longDesc: "Caméra de surveillance agricole alimentée par énergie solaire avec connexion 4G. Vision nocturne HD, détection de mouvement, alertes en temps réel et stockage cloud. Résistante aux intempéries (IP66).", features: ["Vision HD 24/7", "100% solaire", "Alertes instantanées", "Stockage cloud", "Surveillance 24h/24", "Vision nocturne infrarouge", "Détection de mouvement", "Étanche IP66"] },
-  "camera-agricole-v-pro-plus": { longDesc: "La caméra agricole 4G V Pro plus est conçue pour la surveillance continue des exploitations, même en zones reculées. Elle fonctionne à l'énergie solaire et transmet les images directement sur votre téléphone.", features: ["Vision HD 24/7", "100% solaire", "Transmission 4G", "Surveillance continue", "Installation simple", "Résistance aux intempéries", "Alertes en temps réel", "Garantie 6 mois", "Avec éclairage"] },
-  "camera-agricole-v1":          { longDesc: "Caméra de surveillance agricole alimentée par énergie solaire avec connexion 4G. Vision nocturne HD, détection de mouvement, alertes en temps réel et stockage cloud. Résistante aux intempéries (IP66).", features: ["Vision HD 24/7", "100% solaire", "Alertes instantanées", "Stockage cloud", "Surveillance 24h/24", "Vision nocturne infrarouge", "Détection de mouvement", "Étanche IP66"] },
-  "camera-agricole-v-pro":          { longDesc: "La Caméra Agricole Sotilma V Pro offre une surveillance AI en continu, jour et nuit, avec double objectif et vision 360° auto-tracking. Alimentée par panneau solaire 6W + batterie intégrée, elle fonctionne en totale autonomie. Qualité 2K avec vision nocturne couleur (5 LEDs) et résistance IP66.", features: [], featureItems: [
-      { title: "Surveillance AI en continu",          desc: "Enregistre jour & nuit automatiquement, même sans mouvement." },
-      { title: "Vision 360° auto-tracking",           desc: "Rotation 355°/90°, suit les intrus sans angle mort." },
-      { title: "Double objectif",                     desc: "Large angle + zoom pour couvrir champs + zones sensibles." },
-      { title: "Capteur PIR haute précision",         desc: "Détection humaine jusqu'à 27 m : alertes ultra-rapides." },
-      { title: "Énergie solaire 6W + batterie intégrée", desc: "2h de soleil/jour = autonomie annuelle. Installation sans câbles." },
-      { title: "Qualité 2K + nuit en couleur (5 LEDs)", desc: "Images nettes des personnes, même dans le noir total." },
-      { title: "Matériel robuste",                    desc: "4G + Bluetooth, micro & haut-parleur (interphone), IP66 anti-pluie/poussière." },
-    ]},
-  "arroseur-auto-4g":            { longDesc: "L'arroseur automatique 4G combine goutte-à-goutte et aspersion dans un seul appareil pilotable à distance. Programmable depuis votre smartphone, il optimise la consommation d'eau.", features: ["Goutte-à-goutte", "Aspersion intégrée", "Pilotable à distance", "Carte SIM 4G", "Programmable via appli", "Alimentation solaire", "Économie d'eau", "Installation facile", "Garantie 6 mois"] },
-  "sotilma-st02t":               { longDesc: "Le Sotilma ST-02T gère simultanément deux parcelles distinctes. Son système de distribution optimisée garantit une répartition précise de l'eau, avec pilotage complet via 4G.", features: ["Gestion double parcelle", "Distribution optimisée", "Pilotage 4G", "Alimentation solaire", "Installation facile", "Programmable via appli", "Anti-corrosion", "Robuste tout-terrain", "Garantie 6 mois"] },
-  "vanne-simple":                { longDesc: "La vanne motorisée standard est la solution idéale pour automatiser votre irrigation. Alimentée par énergie solaire et pilotable via 4G.", features: ["Simple voie", "Alimentation solaire", "Pilotage 4G", "Installation facile", "Étanchéité IP68", "Anti-corrosion", "Faible consommation", "Compatible tout réseau", "Garantie 6 mois"] },
-  "vanne-industrielle-papillon": { longDesc: "La vanne industrielle papillon électrique est conçue pour les applications intensives. Sa conception anti-corrosion et sa motorisation électrique en font la solution parfaite pour les grandes exploitations.", features: ["Usage intensif", "Anti-corrosion", "Motorisation électrique", "Pilotage à distance", "Grande durabilité", "Étanchéité IP68", "Pression jusqu'à 10 bar", "Matière fonte / acier", "Garantie 12 mois"] },
-  "pack-pro":                    { longDesc: "Le Kit Pack Pro regroupe tout ce dont vous avez besoin pour surveiller et irriguer votre exploitation. Caméra 4G et vanne automatique, le tout alimenté à 100% solaire.", features: ["Caméra 4G incluse", "Vanne automatique", "Pilotage complet", "100% solaire", "Installation clé en main", "Surveillance 24/7", "Économie d'eau", "Application mobile incluse", "Garantie 6 mois"] },
-  "sotilma-mobile-sm01":         { longDesc: "Le Sotilma Mobile SM-01 Simple est une pompe de surface solaire mobile haute performance. Puissance 1890W, débit 45 m³/h, hybride AC/DC. Suffisant pour irriguer 1 à 2 hectares.", features: ["Pompe solaire 1890W", "Débit 45 m³/h", "Hybride AC/DC", "Chariot mobile roulant", "Kit panneaux solaires 1800W", "Câblage complet", "Système monitoring", "Tuyauterie incluse", "Made in Sénégal"] },
-};
 
 function getIcon(feature: string) {
   const f = feature.toLowerCase();
@@ -95,18 +54,51 @@ export default function ProductPage() {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
 
-  const id      = params.id as string;
-  const product = products.find((p) => p.id === id);
-  const detail  = productDetails[id];
+  const id = params.id as string;
 
-  const images = product?.images?.length ? product.images : [product?.image ?? ""];
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+  const [error, setError]     = useState<string | null>(null);
+
+  const images = (product?.images?.length ? product.images : []).filter(isAllowedImageSrc);
   const [imgIdx, setImgIdx] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setNotFound(false);
+    setError(null);
     setImgIdx(0);
+    fetchProduit(id)
+      .then((data) => {
+        if (cancelled) return;
+        if (!data) setNotFound(true);
+        else setProduct(data);
+      })
+      .catch(() => { if (!cancelled) setError("Impossible de charger ce produit pour le moment. Réessaie dans quelques instants."); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [id]);
 
-  if (!product) {
+  if (loading) {
+    return (
+        <main className="min-h-screen flex items-center justify-center">
+          <p className="text-sm" style={{ color: TEXT_M }}>Chargement du produit…</p>
+        </main>
+    );
+  }
+
+  if (error) {
+    return (
+        <main className="min-h-screen flex flex-col items-center justify-center gap-4">
+          <p className="text-lg font-semibold" style={{ color: DARK }}>{error}</p>
+          <Link href="/boutique" className="text-sm underline" style={{ color: BLUE }}>← Retour à la boutique</Link>
+        </main>
+    );
+  }
+
+  if (notFound || !product) {
     return (
         <main className="min-h-screen flex flex-col items-center justify-center gap-4">
           <p className="text-lg font-semibold" style={{ color: DARK }}>Produit introuvable</p>
@@ -143,9 +135,11 @@ export default function ProductPage() {
                 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
                 className="rounded-2xl flex flex-col items-center justify-center p-10 gap-4"
                 style={{ backgroundColor: "#E8EFF6", minHeight: 380 }}>
-              <div className="relative w-full" style={{ aspectRatio: "1/1", maxWidth: 320 }}>
-                <Image src={images[imgIdx]} alt={product.name} fill className="object-contain" sizes="380px" priority />
-              </div>
+              {images.length > 0 && (
+                  <div className="relative w-full" style={{ aspectRatio: "1/1", maxWidth: 320 }}>
+                    <Image src={images[imgIdx]} alt={product.name} fill className="object-contain" sizes="380px" priority />
+                  </div>
+              )}
               {images.length > 1 && (
                   <div className="flex gap-3">
                     {images.map((src, i) => (
@@ -183,53 +177,22 @@ export default function ProductPage() {
                 <p className="font-semibold" style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)", color: RED }}>
                   {fmt(product.price)} <span style={{ fontSize: "0.7em", fontWeight: 600 }}>FCFA</span>
                 </p>
-                {product.oldPrice && (
-                    <>
-                      <p className="font-medium line-through" style={{ fontSize: "0.85rem", color: TEXT_M }}>
-                        {fmt(product.oldPrice)} FCFA
-                      </p>
-                      <span className="px-2 py-0.5 rounded-full text-white font-bold text-xs"
-                            style={{ backgroundColor: "#C0392B" }}>
-                    -{Math.round((1 - product.price / product.oldPrice) * 100)}%
-                  </span>
-                    </>
-                )}
               </div>
 
               {/* Séparateur */}
               <div style={{ height: 1, backgroundColor: "#DDE6F0", marginBottom: 14 }} />
 
               {/* Description */}
-              {detail && (
+              {product.longDescription && (
                   <p className="leading-relaxed mb-5" style={{ fontSize: "0.82rem", color: TEXT_M }}>
-                    {detail.longDesc}
+                    {product.longDescription}
                   </p>
               )}
 
-              {/* Caractéristiques avec sous-texte (featureItems) */}
-              {detail?.featureItems && detail.featureItems.length > 0 && (
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {detail.featureItems.map((f) => (
-                        <div key={f.title}
-                             className="flex items-start gap-2.5 px-3 py-3 rounded-xl"
-                             style={{ backgroundColor: "#EDF4FB", border: "1px solid #D0E4F5" }}>
-                          <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
-                               style={{ backgroundColor: BLUE }}>
-                            {getIcon(f.title)}
-                          </div>
-                          <div>
-                            <p className="font-semibold leading-tight mb-0.5" style={{ fontSize: "0.72rem", color: DARK }}>{f.title}</p>
-                            <p className="leading-snug" style={{ fontSize: "0.65rem", color: TEXT_M }}>{f.desc}</p>
-                          </div>
-                        </div>
-                    ))}
-                  </div>
-              )}
-
-              {/* Grille caractéristiques simples avec icônes */}
-              {detail && detail.features.length > 0 && (
+              {/* Grille caractéristiques avec icônes */}
+              {product.features.length > 0 && (
                   <div className="grid grid-cols-3 gap-2 mb-6">
-                    {detail.features.map((f) => (
+                    {product.features.map((f) => (
                         <div key={f}
                              className="flex items-center gap-2 px-2.5 py-2.5 rounded-xl"
                              style={{ backgroundColor: "#EDF4FB", border: "1px solid #D0E4F5" }}>
